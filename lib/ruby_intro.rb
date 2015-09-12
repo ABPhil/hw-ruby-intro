@@ -2,17 +2,55 @@
 
 # Part 1
 
-def sum arr
-  return 0
+def sum arr 
+  if (arr.length == 0)
+    #handle the empty array
+    return 0
+  end
+  if (arr.length > 0)#sum the array
+    sum = 0
+    arr.each do |x|
+      sum += x
+    end
+    return sum
+  end
 end
+
 
 def max_2_sum arr
-  # YOUR CODE HERE
-end
+  sum = 0
+  if (arr.length ==0)
+    return 0
+  end
+  if (arr.length == 1)
+    return arr[0]
+  end
+  if (arr.length >1)
+    arr.sort!.reverse!
+    sum = arr[1]+arr[0]
+  end
+end  
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  bool = false
+  sum = 0
+  if (arr.length <= 1) # Array has 1 member or is empty
+    return bool
+  end
+  if (arr.length > 1) # Array has more than one member
+    for i in 0...arr.length
+    k = i+1 #ensure a number isn't summed with itself
+      for k in k...arr.length
+      sum = arr[i] + arr[k]
+        if(sum == n)
+          bool = true
+        end #end if
+      end#end inner for
+    end#end outer for
+    return bool
+  end#end if
 end
+ 
 
 # Part 2
 
