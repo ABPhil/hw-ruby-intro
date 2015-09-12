@@ -19,15 +19,15 @@ end
 
 def max_2_sum arr
   sum = 0
-  if (arr.length ==0)
+  if (arr.length ==0)#handle the empty array
     return 0
   end
-  if (arr.length == 1)
+  if (arr.length == 1)#handle the 1 value array
     return arr[0]
   end
   if (arr.length >1)
-    arr.sort!.reverse!
-    sum = arr[1]+arr[0]
+    arr.sort!.reverse!#sort the array in ascending order and then reverse the order so that the length of the array doesn't matter
+    sum = arr[1]+arr[0]#sum the first and second values (the two highest)
   end
 end  
 
@@ -93,5 +93,20 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn, :price #automatically create get/set functions for class
+ def initialize(isbn,price)
+  if(price<=0) #make sure price is valid
+     raise ArgumentError.new("Price cannot be equal to or less than 0")
+  end
+   @price = price
+  if(isbn.length <1) #make sure isbn is valid
+     raise ArgumentError.new("ISBN cannot be empty")
+  end
+   @isbn = isbn
+ end
+ def price_as_string 
+   string = "$#{'%.2f'%@price}" #set price string to begin with a dollar sign and have 2 places of decimal precision
+   return string
+ end
+ 
 end
