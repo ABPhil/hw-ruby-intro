@@ -39,9 +39,9 @@ def sum_to_n? arr, n
   end
   if (arr.length > 1) # Array has more than one member
     for i in 0...arr.length
-    k = i+1 #ensure a number isn't summed with itself
-      for k in k...arr.length
-      sum = arr[i] + arr[k]
+    j = i+1 #ensure a number isn't summed with itself
+      for j in j...arr.length
+      sum = arr[i] + arr[j]
         if(sum == n)
           bool = true
         end #end if
@@ -55,15 +55,39 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  final = "Hello, " + name# Concatenate
+  return final
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  bool = true #assume it starts with a consonant unless proven otherwise
+  s.downcase! #make code case-insensitive
+  if(["a","e","i","o","u"].include?(s[0]))#see if the value is included in the set of vowels
+    bool = false
+  end
+  if(s.length < 1) #check if the string is empty
+    bool = false
+  end
+  if(!/[a-z]/.match(s[0])) #check if the value is not a lowercase letter
+    bool = false
+  end
+  return bool
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  bool = false
+  if(s.length < 1)#check if string is empty
+    return bool
+  end
+  if(/^[0-1]*$/.match(s))#check that the string contains only 0s and 1s
+    int = s.to_i(10)#convert the string to a base 10 integer
+    if(int%4 == 0)#check if integer is a multiple of 4
+       bool = true
+    end
+  else
+    bool = false
+  end
+  return bool
 end
 
 # Part 3
